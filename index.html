@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valeria's Blog · Evaluación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#fdf6f2;
+    --cream-2:#fbecdf;
+    --blush:#f9dbe6;
+    --blush-2:#f6c6d9;
+    --rose:#e8a3bd;
+    --rose-deep:#d685a6;
+    --plum:#7c4a63;
+    --plum-deep:#5c3448;
+    --lavender:#e6dbf3;
+    --powder:#cfe6f2;
+    --text:#513542;
+    --text-soft:#8a6d79;
+    --white:#fffdfc;
+    --shadow: 0 14px 34px rgba(124,74,99,0.14);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Quicksand', 'Segoe UI', sans-serif;
+    color:var(--text);
+    background-color:var(--cream);
+    background-image:
+      radial-gradient(circle at 8% 12%, rgba(246,198,217,0.55), transparent 40%),
+      radial-gradient(circle at 92% 18%, rgba(207,230,242,0.55), transparent 42%),
+      radial-gradient(circle at 15% 85%, rgba(230,219,243,0.55), transparent 40%),
+      radial-gradient(circle at 90% 90%, rgba(249,219,230,0.6), transparent 45%);
+    background-attachment:fixed;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  ul{list-style:none;}
+
+  .bg-photo{
+    position:fixed;
+    z-index:-1;
+    border-radius:50%;
+    background-size:cover;
+    background-repeat:no-repeat;
+    opacity:0.4;
+    -webkit-mask-image:radial-gradient(circle, black 50%, transparent 76%);
+    mask-image:radial-gradient(circle, black 50%, transparent 76%);
+    pointer-events:none;
+  }
+
+  .bg-photo.p1{
+    width:300px;
+    height:300px;
+    top:-60px;
+    right:-60px;
+    background-image:url("IMAGEN%20FONDO%201.jpeg");
+    background-position:50% 82%;
+  }
+
+  .bg-photo.p2{
+    width:280px;
+    height:280px;
+    bottom:-50px;
+    left:-50px;
+    background-image:url("IMAGEN%20FONDO%202.jpeg");
+    background-position:50% 75%;
+  }
+
+  @media (max-width: 780px){
+    .bg-photo{display:none;}
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Playfair Display', serif;
+    color:var(--plum-deep);
+    line-height:1.25;
+  }
+
+  .container{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:linear-gradient(120deg, var(--plum), var(--plum-deep));
+    box-shadow:0 6px 20px rgba(92,52,72,0.25);
+  }
+
+  .nav-inner{
+    max-width:1080px;
+    margin:0 auto;
+    padding:14px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+
+  .brand{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+
+  .brand-title{
+    font-family:'Dancing Script', cursive;
+    font-size:1.9rem;
+    color:var(--white);
+    font-weight:700;
+  }
+
+  .brand-subject{
+    font-size:0.7rem;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    background:rgba(255,255,255,0.16);
+    color:var(--blush);
+    padding:4px 10px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,0.25);
+  }
+
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    flex-wrap:wrap;
+  }
+
+  .nav-links a{
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--white);
+    padding:8px 14px;
+    border-radius:999px;
+    transition:background 0.25s ease, color 0.25s ease;
+    white-space:nowrap;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active{
+    background:var(--blush-2);
+    color:var(--plum-deep);
+  }
+
+  .nav-toggle{
+    display:none;
+    flex-direction:column;
+    gap:4px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:6px;
+  }
+
+  .nav-toggle span{
+    width:24px;
+    height:2px;
+    background:var(--white);
+    border-radius:2px;
+  }
+
+  @media (max-width: 820px){
+    .nav-toggle{display:flex;}
+    .nav-links{
+      position:absolute;
+      top:100%;
+      left:0;
+      right:0;
+      background:var(--plum-deep);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:10px 24px 18px;
+      display:none;
+      gap:2px;
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{width:100%; padding:10px 12px;}
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    padding:38px 24px;
+    text-align:center;
+    overflow:hidden;
+  }
+
+  header.hero .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(40px);
+    opacity:0.55;
+    z-index:0;
+  }
+  header.hero .blob.b1{width:260px; height:260px; background:var(--blush-2); top:-80px; left:-60px;}
+  header.hero .blob.b2{width:220px; height:220px; background:var(--powder); top:20px; right:-70px;}
+  header.hero .blob.b3{width:180px; height:180px; background:var(--lavender); bottom:-70px; left:38%;}
+
+  .hero-content{position:relative; z-index:1;}
+
+  .hero-kicker{
+    font-size:0.8rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--rose-deep);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+
+  .hero-divider{
+    width:90px;
+    height:3px;
+    background:linear-gradient(90deg, var(--rose), var(--powder));
+    border-radius:3px;
+    margin:18px auto 0;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  main{position:relative; z-index:1;}
+
+  section{
+    padding:40px 0;
+    scroll-margin-top:90px;
+  }
+
+  .section-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:0.75rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--rose-deep);
+    background:var(--blush);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:14px;
+  }
+
+  section h2{
+    font-size:clamp(1.5rem, 3.2vw, 2.15rem);
+    margin-bottom:10px;
+    max-width:760px;
+  }
+
+  .section-lead{
+    color:var(--text-soft);
+    max-width:680px;
+    margin-bottom:28px;
+    font-size:0.98rem;
+  }
+
+  .card{
+    background:var(--white);
+    border-radius:26px;
+    box-shadow:var(--shadow);
+    padding:24px;
+    border:1px solid rgba(214,133,166,0.18);
+  }
+
+  .frame-wrap{
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(214,133,166,0.25);
+    background:var(--cream-2);
+  }
+
+  .pdf-frame{
+    position:relative;
+    width:100%;
+    padding-bottom:56.25%;
+  }
+
+  .pdf-frame iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:none;
+    display:block;
+  }
+
+  .open-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:18px;
+    padding:11px 24px;
+    background:linear-gradient(120deg, var(--rose), var(--rose-deep));
+    color:var(--white);
+    font-weight:700;
+    font-size:0.9rem;
+    border-radius:999px;
+    box-shadow:0 10px 22px rgba(214,133,166,0.4);
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .open-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 26px rgba(214,133,166,0.5);
+  }
+
+  .open-btn.alt{
+    background:linear-gradient(120deg, var(--powder), #a9cfe3);
+    color:var(--plum-deep);
+    box-shadow:0 10px 22px rgba(150,190,210,0.4);
+  }
+
+  /* ---------- TABLES SECTION ---------- */
+  .tables-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+
+  @media (max-width: 780px){
+    .tables-grid{grid-template-columns:1fr;}
+  }
+
+  .table-card h3{
+    font-size:1.1rem;
+    margin-bottom:14px;
+    text-align:center;
+  }
+
+  .table-card img{
+    border-radius:14px;
+    border:1px solid rgba(214,133,166,0.2);
+  }
+
+  .fun-fact{
+    margin-top:34px;
+    background:var(--blush);
+    border-radius:18px;
+    padding:26px 28px;
+    position:relative;
+    transform:rotate(-1deg);
+    box-shadow:0 12px 26px rgba(214,133,166,0.28);
+    max-width:760px;
+  }
+
+  .fun-fact::before{
+    content:"";
+    position:absolute;
+    top:-14px;
+    left:36px;
+    width:26px;
+    height:26px;
+    background:var(--rose-deep);
+    border-radius:50%;
+    box-shadow:0 4px 8px rgba(0,0,0,0.15);
+  }
+
+  .fun-fact .label{
+    font-weight:700;
+    color:var(--plum-deep);
+    text-transform:uppercase;
+    font-size:0.75rem;
+    letter-spacing:1.5px;
+    display:block;
+    margin-bottom:8px;
+  }
+
+  .fun-fact p{
+    font-size:1rem;
+    color:var(--text);
+    font-style:italic;
+  }
+
+  /* ---------- VIDEO ---------- */
+  .video-wrap{
+    position:relative;
+    width:100%;
+    padding-bottom:56.25%;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    border:1px solid rgba(214,133,166,0.25);
+  }
+
+  .video-wrap iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:none;
+  }
+
+  .video-thumb{
+    position:absolute;
+    inset:0;
+    display:block;
+  }
+
+  .video-thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:saturate(0.9);
+    transition:transform 0.4s ease, filter 0.4s ease;
+  }
+
+  .video-thumb:hover img{
+    transform:scale(1.04);
+    filter:saturate(1);
+  }
+
+  .video-thumb::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(92,52,72,0.05), rgba(92,52,72,0.45));
+  }
+
+  .play-badge{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:74px;
+    height:74px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.92);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 12px 26px rgba(0,0,0,0.35);
+    transition:transform 0.3s ease;
+    z-index:2;
+  }
+
+  .video-thumb:hover .play-badge{transform:translate(-50%,-50%) scale(1.08);}
+
+  .play-badge svg{width:26px; height:26px; fill:var(--rose-deep); margin-left:4px;}
+
+  /* ---------- FORM ---------- */
+  .form-wrap iframe{
+    width:100%;
+    max-width:640px;
+    height:560px;
+    border:none;
+    display:block;
+    margin:0 auto;
+  }
+
+  /* ---------- DECRETO ---------- */
+  .decreto-card{
+    display:flex;
+    align-items:center;
+    gap:22px;
+    flex-wrap:wrap;
+  }
+
+  .decreto-badge{
+    flex-shrink:0;
+    width:78px;
+    height:78px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--lavender), var(--powder));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.8rem;
+  }
+
+  .decreto-text{flex:1; min-width:240px;}
+  .decreto-text h3{font-size:1.15rem; margin-bottom:6px; color:var(--plum-deep);}
+  .decreto-text p{color:var(--text-soft); font-size:0.95rem;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    margin-top:40px;
+    padding:34px 24px 40px;
+    text-align:center;
+    background:linear-gradient(120deg, var(--plum), var(--plum-deep));
+    color:var(--blush);
+  }
+
+  footer .footer-title{
+    font-family:'Dancing Script', cursive;
+    font-size:1.5rem;
+    color:var(--white);
+    margin-bottom:6px;
+  }
+
+  footer p{font-size:0.85rem; opacity:0.9;}
+
+  /* ---------- BACK TO TOP ---------- */
+  #back-to-top{
+    position:fixed;
+    bottom:26px;
+    right:26px;
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--rose), var(--rose-deep));
+    color:var(--white);
+    border:none;
+    box-shadow:0 10px 22px rgba(214,133,166,0.45);
+    font-size:1.1rem;
+    cursor:pointer;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:90;
+    transition:transform 0.2s ease;
+  }
+  #back-to-top:hover{transform:translateY(-3px);}
+  #back-to-top.show{display:flex;}
+</style>
+</head>
+<body>
+
+<div class="bg-photo p1"></div>
+<div class="bg-photo p2"></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">
+      <span class="brand-title">Valeria's Blog</span>
+      <span class="brand-subject">Evaluación</span>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#linea-tiempo">Línea de tiempo</a></li>
+      <li><a href="#tablas">Tablas</a></li>
+      <li><a href="#video">Video</a></li>
+      <li><a href="#ficha">Ficha técnica</a></li>
+      <li><a href="#formulario">Formulario</a></li>
+      <li><a href="#decreto">Decreto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="hero-content container">
+    <p class="hero-kicker">Universidad Católica Luis Amigó · Materia: Evaluación</p>
+    <div class="hero-divider"></div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section id="linea-tiempo">
+    <span class="section-eyebrow">Entrada 1</span>
+    <h2>Línea de tiempo de momentos históricos de la evaluación de los aprendizajes</h2>
+    <p class="section-lead">Un recorrido desde el origen del examen en la antigua China hasta la evaluación holística, formativa y por competencias que conocemos hoy.</p>
+    <div class="card">
+      <div class="frame-wrap pdf-frame">
+        <iframe src="Linea%20de%20tiempo.pdf#toolbar=0&navpanes=0&view=Fit" title="Línea de tiempo de momentos históricos de la evaluación de los aprendizajes"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="tablas">
+    <span class="section-eyebrow">Entrada 2</span>
+    <h2>Tipos de evaluación: momentos y agentes evaluadores</h2>
+    <p class="section-lead">Dos tablas comparativas que resumen, por un lado, el "cuándo" y el "para qué" de la evaluación diagnóstica, formativa y sumativa; y por otro, "quién evalúa" en la autoevaluación, la heteroevaluación y la coevaluación.</p>
+
+    <div class="card">
+      <div class="tables-grid">
+        <div class="table-card">
+          <h3>¿Cuándo se evalúa? Diagnóstica, formativa y sumativa</h3>
+          <img src="Tabla1.png" alt="Tabla comparativa entre evaluación diagnóstica, formativa y sumativa según momento, propósito y decisión educativa">
+        </div>
+        <div class="table-card">
+          <h3>¿Quién evalúa? Autoevaluación, heteroevaluación y coevaluación</h3>
+          <img src="Tabla%202.png" alt="Tabla comparativa entre autoevaluación, heteroevaluación y coevaluación según quién evalúa, rol del estudiante y habilidad desarrollada">
+        </div>
+      </div>
+
+      <div class="fun-fact">
+        <span class="label">Dato curioso</span>
+        <p>Aunque la evaluación sumativa es la más común en la práctica, la investigación educativa lleva décadas demostrando que la formativa tiene mayor impacto en el aprendizaje real.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="video">
+    <span class="section-eyebrow">Entrada 3</span>
+    <h2>Video: técnicas e instrumentos para evaluar los aprendizajes</h2>
+    <p class="section-lead">Un video que complementa la teoría con ejemplos prácticos de técnicas e instrumentos de evaluación aplicables en el aula.</p>
+    <div class="card">
+      <div class="video-wrap">
+        <a class="video-thumb" href="https://www.youtube.com/watch?v=bJFMNZl5oqI" target="_blank" rel="noopener" aria-label="Ver video: Técnicas e instrumentos para evaluar los aprendizajes">
+          <img src="https://i.ytimg.com/vi/bJFMNZl5oqI/hqdefault.jpg" alt="Miniatura del video Técnicas e instrumentos para evaluar los aprendizajes" loading="lazy">
+          <span class="play-badge">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </a>
+      </div>
+      <a class="open-btn" href="https://www.youtube.com/watch?v=bJFMNZl5oqI" target="_blank" rel="noopener">Ver en YouTube</a>
+    </div>
+  </section>
+
+  <section id="ficha">
+    <span class="section-eyebrow">Entrada 4</span>
+    <h2>Ficha técnica: guía de entrevista semiestructurada</h2>
+    <p class="section-lead">Diseño de un instrumento de evaluación cualitativa: una guía de entrevista semiestructurada para conocer la adaptación de los estudiantes al primer semestre universitario.</p>
+    <div class="card">
+      <div class="frame-wrap pdf-frame">
+        <iframe src="Ficha.pdf#toolbar=0&navpanes=0&view=Fit" title="Ficha técnica: guía de entrevista semiestructurada sobre la adaptación al primer semestre universitario"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="formulario">
+    <span class="section-eyebrow">Entrada 5</span>
+    <h2>Actividad interactiva: formulario de evaluación</h2>
+    <p class="section-lead">Un formulario para poner en práctica y reforzar lo aprendido sobre los tipos y momentos de la evaluación.</p>
+    <div class="card">
+      <div class="frame-wrap form-wrap">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf9vCmAeq4MSlzpAyaI4Ze8fGHqfGwKttn2x0Bhg9Tdy_g2GQ/viewform?embedded=true" title="Formulario de evaluación">Cargando…</iframe>
+      </div>
+      <a class="open-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSf9vCmAeq4MSlzpAyaI4Ze8fGHqfGwKttn2x0Bhg9Tdy_g2GQ/viewform?pli=1" target="_blank" rel="noopener">Abrir el formulario en Google Forms</a>
+    </div>
+  </section>
+
+  <section id="decreto">
+    <span class="section-eyebrow">Entrada 6</span>
+    <h2>Marco normativo: Decreto 1290 de 2009</h2>
+    <p class="section-lead">El decreto colombiano que reglamenta la evaluación del aprendizaje y la promoción de los estudiantes en los niveles de educación básica y media.</p>
+    <div class="card decreto-card">
+      <div class="decreto-badge">📜</div>
+      <div class="decreto-text">
+        <h3>Decreto 1290 de 2009 (Abril 16)</h3>
+        <p>"Por el cual se reglamenta la evaluación del aprendizaje y promoción de los estudiantes de los niveles de educación básica y media." Establece los ámbitos, propósitos y componentes del sistema institucional de evaluación en Colombia.</p>
+        <a class="open-btn alt" href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma_pdf.php?i=35954" target="_blank" rel="noopener">Consultar el decreto completo</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="footer-title">Valeria's Blog</p>
+  <p>Hecho por Valeria Álvarez Ramírez · Universidad Católica Luis Amigó · 2026</p>
+</footer>
+
+<button id="back-to-top" aria-label="Volver arriba">↑</button>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  const sections = document.querySelectorAll('main section[id]');
+  const navAnchors = document.querySelectorAll('.nav-links a');
+
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        navAnchors.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector('.nav-links a[href="#' + entry.target.id + '"]');
+        if(active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+
+  sections.forEach(sec => spy.observe(sec));
+
+  const backToTop = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('show', window.scrollY > 500);
+  });
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+
+</body>
+</html>
