@@ -14,7 +14,10 @@
         }
       });
     }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
-    revealItems.forEach(function (el) { revealObs.observe(el); });
+    revealItems.forEach(function (el) {
+      if (el.offsetHeight > window.innerHeight * 1.2) { el.classList.add('is-in'); return; }
+      revealObs.observe(el);
+    });
   } else {
     revealItems.forEach(function (el) { el.classList.add('is-in'); });
   }
