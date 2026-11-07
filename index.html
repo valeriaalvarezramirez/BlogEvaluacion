@@ -1,682 +1,625 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valeria's Blog · Evaluación</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --cream:#fdf6f2;
-    --cream-2:#fbecdf;
-    --blush:#f9dbe6;
-    --blush-2:#f6c6d9;
-    --rose:#e8a3bd;
-    --rose-deep:#d685a6;
-    --plum:#7c4a63;
-    --plum-deep:#5c3448;
-    --lavender:#e6dbf3;
-    --powder:#cfe6f2;
-    --text:#513542;
-    --text-soft:#8a6d79;
-    --white:#fffdfc;
-    --shadow: 0 14px 34px rgba(124,74,99,0.14);
-  }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aprender a evaluar, evaluar para crecer | Evaluación</title>
+  <meta name="description" content="Blog de la materia Evaluación hecho por Valeria Álvarez, Vanessa Ceballos y Marcela Sánchez.">
+  <meta name="theme-color" content="#5c3448">
 
-  *{box-sizing:border-box; margin:0; padding:0;}
-
-  html{scroll-behavior:smooth;}
-
-  body{
-    font-family:'Quicksand', 'Segoe UI', sans-serif;
-    color:var(--text);
-    background-color:var(--cream);
-    background-image:
-      radial-gradient(circle at 8% 12%, rgba(246,198,217,0.55), transparent 40%),
-      radial-gradient(circle at 92% 18%, rgba(207,230,242,0.55), transparent 42%),
-      radial-gradient(circle at 15% 85%, rgba(230,219,243,0.55), transparent 40%),
-      radial-gradient(circle at 90% 90%, rgba(249,219,230,0.6), transparent 45%);
-    background-attachment:fixed;
-    line-height:1.65;
-    overflow-x:hidden;
-  }
-
-  a{color:inherit; text-decoration:none;}
-  img{max-width:100%; display:block;}
-  ul{list-style:none;}
-
-  .bg-photo{
-    position:fixed;
-    z-index:-1;
-    border-radius:50%;
-    background-size:cover;
-    background-repeat:no-repeat;
-    opacity:0.4;
-    -webkit-mask-image:radial-gradient(circle, black 50%, transparent 76%);
-    mask-image:radial-gradient(circle, black 50%, transparent 76%);
-    pointer-events:none;
-  }
-
-  .bg-photo.p1{
-    width:300px;
-    height:300px;
-    top:-60px;
-    right:-60px;
-    background-image:url("IMAGEN%20FONDO%201.jpeg");
-    background-position:50% 82%;
-  }
-
-  .bg-photo.p2{
-    width:280px;
-    height:280px;
-    bottom:-50px;
-    left:-50px;
-    background-image:url("IMAGEN%20FONDO%202.jpeg");
-    background-position:50% 75%;
-  }
-
-  @media (max-width: 780px){
-    .bg-photo{display:none;}
-  }
-
-  h1,h2,h3,h4{
-    font-family:'Playfair Display', serif;
-    color:var(--plum-deep);
-    line-height:1.25;
-  }
-
-  .container{
-    max-width:1080px;
-    margin:0 auto;
-    padding:0 24px;
-  }
-
-  /* ---------- NAV ---------- */
-  nav{
-    position:sticky;
-    top:0;
-    z-index:100;
-    background:linear-gradient(120deg, var(--plum), var(--plum-deep));
-    box-shadow:0 6px 20px rgba(92,52,72,0.25);
-  }
-
-  .nav-inner{
-    max-width:1080px;
-    margin:0 auto;
-    padding:14px 24px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
-  }
-
-  .brand{
-    display:flex;
-    align-items:baseline;
-    gap:10px;
-    flex-wrap:wrap;
-  }
-
-  .brand-title{
-    font-family:'Dancing Script', cursive;
-    font-size:1.9rem;
-    color:var(--white);
-    font-weight:700;
-  }
-
-  .brand-subject{
-    font-size:0.7rem;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-    background:rgba(255,255,255,0.16);
-    color:var(--blush);
-    padding:4px 10px;
-    border-radius:999px;
-    border:1px solid rgba(255,255,255,0.25);
-  }
-
-  .nav-links{
-    display:flex;
-    align-items:center;
-    gap:4px;
-    flex-wrap:wrap;
-  }
-
-  .nav-links a{
-    font-size:0.85rem;
-    font-weight:600;
-    color:var(--white);
-    padding:8px 14px;
-    border-radius:999px;
-    transition:background 0.25s ease, color 0.25s ease;
-    white-space:nowrap;
-  }
-
-  .nav-links a:hover,
-  .nav-links a.active{
-    background:var(--blush-2);
-    color:var(--plum-deep);
-  }
-
-  .nav-toggle{
-    display:none;
-    flex-direction:column;
-    gap:4px;
-    background:none;
-    border:none;
-    cursor:pointer;
-    padding:6px;
-  }
-
-  .nav-toggle span{
-    width:24px;
-    height:2px;
-    background:var(--white);
-    border-radius:2px;
-  }
-
-  @media (max-width: 820px){
-    .nav-toggle{display:flex;}
-    .nav-links{
-      position:absolute;
-      top:100%;
-      left:0;
-      right:0;
-      background:var(--plum-deep);
-      flex-direction:column;
-      align-items:flex-start;
-      padding:10px 24px 18px;
-      display:none;
-      gap:2px;
-    }
-    .nav-links.open{display:flex;}
-    .nav-links a{width:100%; padding:10px 12px;}
-  }
-
-  /* ---------- HERO ---------- */
-  header.hero{
-    position:relative;
-    padding:38px 24px;
-    text-align:center;
-    overflow:hidden;
-  }
-
-  header.hero .blob{
-    position:absolute;
-    border-radius:50%;
-    filter:blur(40px);
-    opacity:0.55;
-    z-index:0;
-  }
-  header.hero .blob.b1{width:260px; height:260px; background:var(--blush-2); top:-80px; left:-60px;}
-  header.hero .blob.b2{width:220px; height:220px; background:var(--powder); top:20px; right:-70px;}
-  header.hero .blob.b3{width:180px; height:180px; background:var(--lavender); bottom:-70px; left:38%;}
-
-  .hero-content{position:relative; z-index:1;}
-
-  .hero-kicker{
-    font-size:0.8rem;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    color:var(--rose-deep);
-    font-weight:700;
-    margin-bottom:14px;
-  }
-
-  .hero-divider{
-    width:90px;
-    height:3px;
-    background:linear-gradient(90deg, var(--rose), var(--powder));
-    border-radius:3px;
-    margin:18px auto 0;
-  }
-
-  /* ---------- SECTIONS ---------- */
-  main{position:relative; z-index:1;}
-
-  section{
-    padding:40px 0;
-    scroll-margin-top:90px;
-  }
-
-  .section-eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    font-size:0.75rem;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    font-weight:700;
-    color:var(--rose-deep);
-    background:var(--blush);
-    padding:6px 14px;
-    border-radius:999px;
-    margin-bottom:14px;
-  }
-
-  section h2{
-    font-size:clamp(1.5rem, 3.2vw, 2.15rem);
-    margin-bottom:10px;
-    max-width:760px;
-  }
-
-  .section-lead{
-    color:var(--text-soft);
-    max-width:680px;
-    margin-bottom:28px;
-    font-size:0.98rem;
-  }
-
-  .card{
-    background:var(--white);
-    border-radius:26px;
-    box-shadow:var(--shadow);
-    padding:24px;
-    border:1px solid rgba(214,133,166,0.18);
-  }
-
-  .frame-wrap{
-    border-radius:20px;
-    overflow:hidden;
-    border:1px solid rgba(214,133,166,0.25);
-    background:var(--cream-2);
-  }
-
-  .open-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    margin-top:18px;
-    padding:11px 24px;
-    background:linear-gradient(120deg, var(--rose), var(--rose-deep));
-    color:var(--white);
-    font-weight:700;
-    font-size:0.9rem;
-    border-radius:999px;
-    box-shadow:0 10px 22px rgba(214,133,166,0.4);
-    transition:transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .open-btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 14px 26px rgba(214,133,166,0.5);
-  }
-
-  .open-btn.alt{
-    background:linear-gradient(120deg, var(--powder), #a9cfe3);
-    color:var(--plum-deep);
-    box-shadow:0 10px 22px rgba(150,190,210,0.4);
-  }
-
-  /* ---------- TABLES SECTION ---------- */
-  .tables-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:24px;
-  }
-
-  @media (max-width: 780px){
-    .tables-grid{grid-template-columns:1fr;}
-  }
-
-  .table-card h3{
-    font-size:1.1rem;
-    margin-bottom:14px;
-    text-align:center;
-  }
-
-  .table-card img{
-    border-radius:14px;
-    border:1px solid rgba(214,133,166,0.2);
-  }
-
-  .fun-fact{
-    margin-top:34px;
-    background:var(--blush);
-    border-radius:18px;
-    padding:26px 28px;
-    position:relative;
-    transform:rotate(-1deg);
-    box-shadow:0 12px 26px rgba(214,133,166,0.28);
-    max-width:760px;
-  }
-
-  .fun-fact::before{
-    content:"";
-    position:absolute;
-    top:-14px;
-    left:36px;
-    width:26px;
-    height:26px;
-    background:var(--rose-deep);
-    border-radius:50%;
-    box-shadow:0 4px 8px rgba(0,0,0,0.15);
-  }
-
-  .fun-fact .label{
-    font-weight:700;
-    color:var(--plum-deep);
-    text-transform:uppercase;
-    font-size:0.75rem;
-    letter-spacing:1.5px;
-    display:block;
-    margin-bottom:8px;
-  }
-
-  .fun-fact p{
-    font-size:1rem;
-    color:var(--text);
-    font-style:italic;
-  }
-
-  /* ---------- VIDEO ---------- */
-  .video-wrap{
-    position:relative;
-    width:100%;
-    padding-bottom:56.25%;
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:var(--shadow);
-    border:1px solid rgba(214,133,166,0.25);
-  }
-
-  .video-wrap iframe{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    border:none;
-  }
-
-  .video-thumb{
-    position:absolute;
-    inset:0;
-    display:block;
-  }
-
-  .video-thumb img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    filter:saturate(0.9);
-    transition:transform 0.4s ease, filter 0.4s ease;
-  }
-
-  .video-thumb:hover img{
-    transform:scale(1.04);
-    filter:saturate(1);
-  }
-
-  .video-thumb::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(180deg, rgba(92,52,72,0.05), rgba(92,52,72,0.45));
-  }
-
-  .play-badge{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:74px;
-    height:74px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.92);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    box-shadow:0 12px 26px rgba(0,0,0,0.35);
-    transition:transform 0.3s ease;
-    z-index:2;
-  }
-
-  .video-thumb:hover .play-badge{transform:translate(-50%,-50%) scale(1.08);}
-
-  .play-badge svg{width:26px; height:26px; fill:var(--rose-deep); margin-left:4px;}
-
-  /* ---------- FORM ---------- */
-  .form-wrap iframe{
-    width:100%;
-    max-width:640px;
-    height:560px;
-    border:none;
-    display:block;
-    margin:0 auto;
-  }
-
-  /* ---------- DECRETO ---------- */
-  .decreto-card{
-    display:flex;
-    align-items:center;
-    gap:22px;
-    flex-wrap:wrap;
-  }
-
-  .decreto-badge{
-    flex-shrink:0;
-    width:78px;
-    height:78px;
-    border-radius:50%;
-    background:linear-gradient(135deg, var(--lavender), var(--powder));
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:1.8rem;
-  }
-
-  .decreto-text{flex:1; min-width:240px;}
-  .decreto-text h3{font-size:1.15rem; margin-bottom:6px; color:var(--plum-deep);}
-  .decreto-text p{color:var(--text-soft); font-size:0.95rem;}
-
-  /* ---------- FOOTER ---------- */
-  footer{
-    margin-top:40px;
-    padding:34px 24px 40px;
-    text-align:center;
-    background:linear-gradient(120deg, var(--plum), var(--plum-deep));
-    color:var(--blush);
-  }
-
-  footer .footer-title{
-    font-family:'Dancing Script', cursive;
-    font-size:1.5rem;
-    color:var(--white);
-    margin-bottom:6px;
-  }
-
-  footer p{font-size:0.85rem; opacity:0.9;}
-
-  /* ---------- BACK TO TOP ---------- */
-  #back-to-top{
-    position:fixed;
-    bottom:26px;
-    right:26px;
-    width:46px;
-    height:46px;
-    border-radius:50%;
-    background:linear-gradient(135deg, var(--rose), var(--rose-deep));
-    color:var(--white);
-    border:none;
-    box-shadow:0 10px 22px rgba(214,133,166,0.45);
-    font-size:1.1rem;
-    cursor:pointer;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:90;
-    transition:transform 0.2s ease;
-  }
-  #back-to-top:hover{transform:translateY(-3px);}
-  #back-to-top.show{display:flex;}
-</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
-<div class="bg-photo p1"></div>
-<div class="bg-photo p2"></div>
+  <div class="bg-photo bg-photo--1" aria-hidden="true"></div>
+  <div class="bg-photo bg-photo--2" aria-hidden="true"></div>
 
-<nav>
-  <div class="nav-inner">
-    <div class="brand">
-      <span class="brand-title">Valeria's Blog</span>
-      <span class="brand-subject">Evaluación</span>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#linea-tiempo">Línea de tiempo</a></li>
-      <li><a href="#tablas">Tablas</a></li>
-      <li><a href="#video">Video</a></li>
-      <li><a href="#ficha">Ficha técnica</a></li>
-      <li><a href="#formulario">Formulario</a></li>
-      <li><a href="#decreto">Decreto</a></li>
-    </ul>
-  </div>
-</nav>
+  <header class="nav-wrap">
+    <nav class="nav" aria-label="Principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#evidencias-clase">Evidencias de clase</a>
+      <a href="#evidencias-complementarias">Evidencias complementarias</a>
+    </nav>
+  </header>
 
-<header class="hero">
-  <div class="blob b1"></div>
-  <div class="blob b2"></div>
-  <div class="blob b3"></div>
-  <div class="hero-content container">
-    <p class="hero-kicker">Universidad Católica Luis Amigó · Materia: Evaluación</p>
-    <div class="hero-divider"></div>
-  </div>
-</header>
+  <main>
 
-<main class="container">
+    <!-- ===================== INICIO ===================== -->
+    <section id="inicio" class="sheet" aria-labelledby="titulo-blog">
+      <div class="wrap">
 
-  <section id="linea-tiempo">
-    <span class="section-eyebrow">Entrada 1</span>
-    <h2>Línea de tiempo de momentos históricos de la evaluación de los aprendizajes</h2>
-    <p class="section-lead">Un recorrido desde el origen del examen en la antigua China hasta la evaluación holística, formativa y por competencias que conocemos hoy.</p>
-    <div class="card">
-      <div class="frame-wrap">
-        <img src="Linea%20de%20tiempo.png" alt="Línea de tiempo de momentos históricos de la evaluación de los aprendizajes">
-      </div>
-    </div>
-  </section>
-
-  <section id="tablas">
-    <span class="section-eyebrow">Entrada 2</span>
-    <h2>Tipos de evaluación: momentos y agentes evaluadores</h2>
-    <p class="section-lead">Dos tablas comparativas que resumen, por un lado, el "cuándo" y el "para qué" de la evaluación diagnóstica, formativa y sumativa; y por otro, "quién evalúa" en la autoevaluación, la heteroevaluación y la coevaluación.</p>
-
-    <div class="card">
-      <div class="tables-grid">
-        <div class="table-card">
-          <h3>¿Cuándo se evalúa? Diagnóstica, formativa y sumativa</h3>
-          <img src="Tabla1.png" alt="Tabla comparativa entre evaluación diagnóstica, formativa y sumativa según momento, propósito y decisión educativa">
+        <div class="hero">
+          <div>
+            <p class="hero__kicker rise" style="--d:.05s">Materia: Evaluación</p>
+            <h1 id="titulo-blog" class="display hero__title">
+              <span class="rise" style="--d:.15s">Aprender a evaluar,</span>
+              <span class="rise" style="--d:.3s"><em class="marker">evaluar para crecer</em></span>
+            </h1>
+            <div class="team rise" style="--d:.5s">
+              <span class="team__label">Integrantes</span>
+              <span class="chip chip--rose"><b>V</b>Valeria Álvarez</span>
+              <span class="chip chip--sage"><b>V</b>Vanessa Ceballos</span>
+              <span class="chip chip--powder"><b>M</b>Marcela Sánchez</span>
+            </div>
+          </div>
         </div>
-        <div class="table-card">
-          <h3>¿Quién evalúa? Autoevaluación, heteroevaluación y coevaluación</h3>
-          <img src="Tabla%202.png" alt="Tabla comparativa entre autoevaluación, heteroevaluación y coevaluación según quién evalúa, rol del estudiante y habilidad desarrollada">
+
+        <div class="pair">
+          <article class="note-card note-card--obj reveal">
+            <h3 class="title">Objetivo del blog</h3>
+            <p class="prose">El objetivo es recopilar y organizar de manera digital las evidencias, conceptos y reflexiones construidos durante el curso de Evaluación, integrando productos de clase y evidencias complementarias, con el fin de mostrar de forma creativa y ordenada el proceso de aprendizaje, reflexionar críticamente sobre él como ejercicio de autoevaluación y demostrar la apropiación de los fundamentos de la evaluación educativa.</p>
+          </article>
+          <article class="note-card note-card--jus reveal" style="--d:.12s">
+            <h3 class="title">Justificación del blog</h3>
+            <p class="prose">La creación de este blog representa una oportunidad para reconocer la importancia de la evaluación como un proceso continuo, reflexivo y fundamental en la formación docente. A través de las evidencias y reflexiones personales, se pretende analizar el proceso de aprendizaje propio, identificar fortalezas, aspectos a mejorar, y comprender cómo los conceptos de evaluación educativa contribuyen a una práctica pedagógica más consciente, crítica e integral.</p>
+          </article>
         </div>
-      </div>
 
-      <div class="fun-fact">
-        <span class="label">Dato curioso</span>
-        <p>Aunque la evaluación sumativa es la más común en la práctica, la investigación educativa lleva décadas demostrando que la formativa tiene mayor impacto en el aprendizaje real.</p>
       </div>
+    </section>
+
+    <!-- ===================== EVIDENCIAS DE CLASE ===================== -->
+    <section id="evidencias-clase" class="sheet sheet--clase" aria-labelledby="titulo-clase">
+      <div class="wrap">
+
+        <div class="section-head reveal">
+          <h2 id="titulo-clase" class="banner">Evidencias <em class="marker">de clase</em></h2>
+        </div>
+
+        <!-- Líneas de tiempo (carrusel) -->
+        <div class="block" id="lineas-de-tiempo">
+          <div class="block__head reveal">
+            <h3 class="title">Líneas de tiempo: Momentos históricos de la evaluación</h3>
+          </div>
+
+          <div class="carousel reveal" data-carousel role="group" aria-roledescription="carrusel" aria-label="Líneas de tiempo y sus reflexiones">
+            <div class="carousel__viewport">
+              <article class="slide is-active" role="group" aria-roledescription="diapositiva" aria-label="1 de 3" data-name="Valeria" style="--ar:1.779">
+                <div class="slide__stage">
+                  <button class="frame frame--plain zoom-btn" type="button" data-zoom aria-label="Ampliar la línea de tiempo de Valeria">
+                    <span class="slot"><i class="ph ph-image" aria-hidden="true"></i>Línea de tiempo de Valeria<code>assets/img/evidencias-clase/lineas-de-tiempo/linea-valeria.png</code></span>
+                    <img src="assets/img/evidencias-clase/lineas-de-tiempo/linea-valeria.png" alt="Línea de tiempo de Valeria: momentos históricos de la evaluación de los aprendizajes" onerror="this.hidden=true;this.closest('.frame').classList.add('is-missing')">
+                    <span class="zoom-hint" aria-hidden="true"><i class="ph ph-arrows-out-simple"></i></span>
+                  </button>
+                  <div class="slide__note">
+                    <span class="chip chip--sm chip--rose"><b>V</b>Valeria Álvarez</span>
+                    <h4 class="label">Reflexión</h4>
+                    <p>Esta línea de tiempo muestra que la evaluación de los aprendizajes empezó como una herramienta para seleccionar y medir, con el examen en China y los tests estandarizados, y con el tiempo poco a poco se volvió un proceso más humano, participativo y formativo. Primero se trataba solo de comparar resultados con objetivos. Después se pasó a usar la evaluación para tomar decisiones y emitir juicios, y más adelante a comprender e interpretar los procesos. Hoy la evaluación está al servicio de la formación integral del estudiante: no busca solo calificar, sino ayudar a aprender.</p>
+                    <p>Mi momento favorito es la 4ta generación, constructivista (últimas décadas del siglo XX). Este es el que más me gusta porque cambia quién tiene la voz en la evaluación. Los criterios ya no llegan impuestos desde afuera: los construyen los mismos participantes. El estudiante y la comunidad dejan de ser solo evaluados y pasan a ser parte activa del proceso. Como futuro docente me parece clave, porque así la evaluación se convierte en un espacio de diálogo y reflexión, y no en una simple medición. Además, este momento abre el camino a lo que hoy conocemos como evaluación formativa y por competencias.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="slide" role="group" aria-roledescription="diapositiva" aria-label="2 de 3" data-name="Vanessa" style="--ar:1.333">
+                <div class="slide__stage">
+                  <button class="frame frame--plain zoom-btn frame--tint-sage" type="button" data-zoom aria-label="Ampliar la línea de tiempo de Vanessa">
+                    <span class="slot"><i class="ph ph-image" aria-hidden="true"></i>Línea de tiempo de Vanessa<code>assets/img/evidencias-clase/lineas-de-tiempo/linea-vanessa.jpeg</code></span>
+                    <img src="assets/img/evidencias-clase/lineas-de-tiempo/linea-vanessa.jpeg" alt="Línea de tiempo de Vanessa: momentos históricos de la evaluación de los aprendizajes" onerror="this.hidden=true;this.closest('.frame').classList.add('is-missing')">
+                    <span class="zoom-hint" aria-hidden="true"><i class="ph ph-arrows-out-simple"></i></span>
+                  </button>
+                  <div class="slide__note">
+                    <span class="chip chip--sm chip--sage"><b>V</b>Vanessa Ceballos</span>
+                    <h4 class="label">Reflexión</h4>
+                    <p>Esta línea del tiempo me muestra que la evaluación nació como un mecanismo de selección y control, y que durante siglos evaluar fue sinónimo de medir y clasificar. Recuerdo cuántas veces, como estudiante, la nota importó más que lo aprendido.</p>
+                    <p>Con Tyler y Cronbach la evaluación empezó a verse como una forma de comprobar objetivos y, sobre todo, de recoger información para mejorar la enseñanza. Esa idea me parece esencial: evaluar no es sentenciar, es acompañar. Y como evaluar implica emitir juicios sobre otros, también conlleva una responsabilidad ética.</p>
+                    <p>Lo que más me interpela es el giro hacia la autoevaluación y la participación del estudiante, reflejado en la Ley 115 de 1994 en Colombia. Pasar de evaluar a las personas a evaluar con ellas cambia la relación pedagógica, aunque reconozco que entre la norma y la práctica en el aula aún hay camino por recorrer. Además, aunque todo sea evaluable permite una visión integral, me preocupa caer en evaluar por evaluar. Creo que el verdadero avance no fue crear mejores instrumentos, sino cambiar la pregunta de “¿cuánto sabe?” a “¿cómo puedo ayudarle a aprender mejor?”.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="slide slide--portrait" role="group" aria-roledescription="diapositiva" aria-label="3 de 3" data-name="Marcela" style="--ar:0.451">
+                <div class="slide__stage">
+                  <button class="frame frame--plain zoom-btn frame--tint-powder" type="button" data-zoom aria-label="Ampliar la línea de tiempo de Marcela">
+                    <span class="slot"><i class="ph ph-image" aria-hidden="true"></i>Línea de tiempo de Marcela<code>assets/img/evidencias-clase/lineas-de-tiempo/linea-marcela.jpeg</code></span>
+                    <img src="assets/img/evidencias-clase/lineas-de-tiempo/linea-marcela.jpeg" alt="Línea de tiempo de Marcela: momentos históricos de la evaluación de los aprendizajes" onerror="this.hidden=true;this.closest('.frame').classList.add('is-missing')">
+                    <span class="zoom-hint" aria-hidden="true"><i class="ph ph-arrows-out-simple"></i></span>
+                  </button>
+                  <div class="slide__note">
+                    <span class="chip chip--sm chip--powder"><b>M</b>Marcela Sánchez</span>
+                    <h4 class="label">Reflexión</h4>
+                    <p>El periodo que más llamó mi atención es la cuarta generación, ya se está dejando atrás el calificar a un estudiante por sus resultados en una evaluación, va más allá de una nota y se está teniendo en cuenta las opiniones y necesidades de todos los que participan en el proceso del aprendizaje.</p>
+                    <p>Veo al profesor como un docente más cercano a sus estudiantes, que no solo transmite conocimiento, sino que también acompaña y orienta. Entender la enseñanza como un proceso de construcción conjunta y utiliza la evaluación para saber qué están aprendiendo los estudiantes, sus dificultades y cómo poder ayudar en el proceso de mejora.</p>
+                    <p>Imagino al estudiante como un ser más participativo, sin miedo a expresar sus ideas con base en el respeto, y reflexionar sobre su propio aprendizaje. Su relación con los contenidos sería más activa, porque no tendría que limitarse solo a memorizar información, sino que podría relacionarla con sus experiencias y situación de la vida cotidiana.</p>
+                    <p>Por eso considero que esta etapa es importante porque muestra que evaluar no es solamente poner una nota y clasificar a los estudiantes, sino también acompañar, comprender y ayudar a mejorar el aprendizaje.</p>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+
+            <div class="carousel__controls">
+              <button class="round-btn" type="button" data-prev aria-label="Línea de tiempo anterior"><i class="ph ph-arrow-left" aria-hidden="true"></i></button>
+              <div class="dots" data-dots></div>
+              <button class="round-btn" type="button" data-next aria-label="Línea de tiempo siguiente"><i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+            </div>
+            <p class="sr-only" aria-live="polite" data-live></p>
+          </div>
+        </div>
+
+        <!-- Podcast -->
+        <div class="block" id="podcast">
+          <div class="block__head reveal">
+            <h3 class="title">Podcast</h3>
+          </div>
+          <div class="podcast reveal">
+            <div class="podcast__plate">
+              <a class="video__thumb" href="https://www.youtube.com/watch?v=AKtClhPkfJA" target="_blank" rel="noopener" aria-label="Ver el podcast en YouTube (se abre en una pestaña nueva)">
+                <img src="https://i.ytimg.com/vi/AKtClhPkfJA/hqdefault.jpg" alt="" loading="lazy">
+                <span class="video__play"><span><i class="ph-fill ph-play" aria-hidden="true"></i></span></span>
+              </a>
+            </div>
+            <div class="video__meta">
+              <p class="video__title">Podcast encuesta</p>
+              <a class="btn" href="https://www.youtube.com/watch?v=AKtClhPkfJA" target="_blank" rel="noopener"><i class="ph ph-youtube-logo" aria-hidden="true"></i>Ver en YouTube</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foro -->
+        <div class="block" id="foro">
+          <div class="block__head reveal">
+            <h3 class="title">Foro</h3>
+          </div>
+
+          <div class="thread reveal">
+            <div class="bubble bubble--q">
+              <h4 class="label"><i class="ph ph-chat-circle-text" aria-hidden="true"></i>Pregunta 1</h4>
+              <p>¿Se podría considerar una evaluación ideal? De ser posible, ¿qué elementos contendría?</p>
+            </div>
+            <div class="bubble bubble--a">
+              <h4 class="label"><i class="ph ph-quotes" aria-hidden="true"></i>Reflexión</h4>
+              <p>Considero que la valoración tendría que ir más allá de una simple calificación cuantitativa para poder responder a las verdaderas necesidades, deseos y aspiraciones de los estudiantes. Para lograrlo, debe considerar los ritmos de aprendizaje individuales, las fortalezas particulares y los objetivos de vida de cada alumno, ofreciendo distintas alternativas para que demuestren su conocimiento de manera práctica, justa y con un sentido real para su futuro.</p>
+            </div>
+          </div>
+
+          <div class="thread thread--right reveal">
+            <div class="bubble bubble--q bubble--long">
+              <h4 class="label"><i class="ph ph-chat-circle-text" aria-hidden="true"></i>Pregunta 2</h4>
+              <p>A partir de la conversación con el invitado, ¿qué aspecto de la evaluación formativa consideras más importante para favorecer el aprendizaje de los estudiantes y por qué? Relaciona tu respuesta con alguna experiencia o situación que podría presentarse en el aula. ¿Qué elementos del SIEE, de ser posible, cambiarías o fortalecerías? ¿Por qué?</p>
+            </div>
+            <div class="bubble bubble--a">
+              <h4 class="label"><i class="ph ph-quotes" aria-hidden="true"></i>Reflexión</h4>
+              <p>No pude asistir a la charla, así que no puedo referirme a lo que dijo el invitado, pero para mí lo más importante de la evaluación formativa es la retroalimentación y pondré como ejemplo mi práctica de observación. En el quinto grado, cuando un niño dice una frase en inglés con un error y solo escucha “está mal”, lo más probable es que no vuelva a levantar la mano. Si en cambio le doy una pista y le recuerdo qué se esperaba en la actividad, corrige él mismo y se arriesga más la próxima vez. Ahí el error deja de ser un fracaso y se vuelve parte de aprender. Del SIEE fortalecería que lo formativo cuente de verdad y no se quede todo en una nota por periodo, y que los criterios se expliquen a los estudiantes desde el inicio, con palabras que entiendan para que sea un proceso más justo y transparente.</p>
+            </div>
+          </div>
+        </div>
+
+<!-- Ficha técnica -->
+        <div class="block" id="ficha-tecnica">
+          <div class="block__head reveal">
+            <h3 class="title">Ficha técnica: guía de entrevista semiestructurada</h3>
+            <p class="lede">Es una herramienta de investigación cualitativa que combina la estructura de un guion previo con la flexibilidad de una conversación natural. A diferencia de un cuestionario cerrado, permite al entrevistador adaptar el orden de las preguntas y profundizar en temas emergentes según el flujo del diálogo.</p>
+          </div>
+          <div class="plate reveal">
+            <button class="frame frame--16x9 zoom-btn" type="button" data-zoom aria-label="Ampliar la ficha técnica">
+              <span class="slot"><i class="ph ph-image" aria-hidden="true"></i>Ficha técnica<code>assets/img/evidencias-clase/ficha-tecnica/ficha-tecnica.png</code></span>
+              <img src="assets/img/evidencias-clase/ficha-tecnica/ficha-tecnica.png" alt="Ficha técnica: guía de entrevista semiestructurada" onerror="this.hidden=true;this.closest('.frame').classList.add('is-missing')">
+              <span class="zoom-hint" aria-hidden="true"><i class="ph ph-arrows-out-simple"></i></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tablas -->
+        <div class="block" id="tablas">
+          <div class="table-block reveal">
+            <div class="table-block__head">
+              <h3 class="title"><span class="num">#1</span>¿Quién evalúa? <span class="sub">Autoevaluación, heteroevaluación y coevaluación</span></h3>
+            </div>
+            <div class="plate plate--sage">
+              <button class="frame frame--plain zoom-btn" type="button" data-zoom aria-label="Ampliar la tabla 1">
+                <img src="assets/img/evidencias-clase/tablas/tabla-1-quien-evalua.png" alt="Tabla comparativa de autoevaluación, heteroevaluación y coevaluación: quién evalúa, rol del estudiante y habilidad desarrollada" onerror="this.hidden=true;this.closest('.frame').classList.add('is-missing')">
+                <span class="zoom-hint" aria-hidden="true"><i class="ph ph-arrows-out-simple"></i></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="table-block reveal">
+            <div class="table-block__head">
+              <h3 class="title"><span class="num">#2</span>¿Cuándo se evalúa? <span class="sub">Diagnóstica, formativa y sumativa</span></h3>
+            </div>
+            <div class="plate plate--blush">
+              <button class="frame frame--plain zoom-btn" type="button" data-zoom aria-label="Ampliar la tabla 2">
+                <img src="assets/img/evidencias-clase/tablas/tabla-2-cuando-se-evalua.png" alt="Tabla comparativa de la evaluación diagnóstica, formativa y sumativa" onerror="this.hidden=true;this.closest('.frame').classList.add('is-missing')">
+                <span class="zoom-hint" aria-hidden="true"><i class="ph ph-arrows-out-simple"></i></span>
+              </button>
+            </div>
+          </div>
+
+          <aside class="fun-fact reveal" aria-labelledby="dato-curioso">
+            <h3 id="dato-curioso" class="fun-fact__title">Dato curioso</h3>
+            <p>Aunque la evaluación sumativa es la más común en la práctica, la investigación educativa lleva décadas demostrando que la formativa tiene mayor impacto en el aprendizaje real.</p>
+          </aside>        </div>
+
+        <!-- Cuestionario -->
+        <div class="block" id="cuestionario">
+          <div class="survey">
+            <div class="survey__copy reveal">
+              <h3 class="title">Cuestionario semiestructurado</h3>
+              <p class="lede" style="margin-top:16px">Es un instrumento con preguntas predefinidas cerradas y abiertas que permite flexibilidad para profundizar o repreguntar durante su aplicación.</p>
+              <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSf9vCmAeq4MSlzpAyaI4Ze8fGHqfGwKttn2x0Bhg9Tdy_g2GQ/viewform?pli=1" target="_blank" rel="noopener"><i class="ph ph-arrow-up-right" aria-hidden="true"></i>Abrir en Google Forms</a>
+            </div>
+            <div class="survey__form reveal" style="--d:.1s">
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf9vCmAeq4MSlzpAyaI4Ze8fGHqfGwKttn2x0Bhg9Tdy_g2GQ/viewform?embedded=true" title="Cuestionario semiestructurado" loading="lazy">Cargando…</iframe>
+            </div>
+          </div>
+        </div>
+
+        <!-- Decreto -->
+        <div class="block" id="decreto">
+          <div class="decree reveal">
+            <div class="decree__badge" aria-hidden="true"><i class="ph ph-scroll"></i></div>
+            <div class="decree__copy">
+              <h3 class="title">Decreto 1290 de 2009</h3>
+              <p class="decree__date">16 de abril de 2009</p>
+              <p>“Por el cual se reglamenta la evaluación del aprendizaje y promoción de los estudiantes de los niveles de educación básica y media.” Establece los ámbitos, propósitos y componentes del sistema institucional de evaluación en Colombia.</p>
+              <a class="btn" href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma_pdf.php?i=35954" target="_blank" rel="noopener"><i class="ph ph-arrow-up-right" aria-hidden="true"></i>Consultar el decreto completo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carteleras -->
+        <div class="block" id="carteleras">
+          <div class="block__head reveal">
+            <h3 class="title">Carteleras</h3>
+          </div>
+          <div class="posters">
+            <figure class="poster poster--1 reveal">
+              <button class="frame frame--plain zoom-btn" type="button" data-zoom aria-label="Ampliar la cartelera 1">
+                <span class="slot"><i class="ph ph-image" aria-hidden="true"></i>Cartelera 1<code>assets/img/evidencias-clase/carteleras/cartelera-1.jpeg</code></span>
+                <img src="assets/img/evidencias-clase/carteleras/cartelera-1.jpeg" alt="Cartelera escrita a mano sobre la evaluación según Stufflebeam (1971): qué debe hacer, garantizar, promover y ajustar el docente" loading="lazy" onerror="this.hidden=true;this.closest('.frame').classList.add('is-missing')">
+                <span class="zoom-hint" aria-hidden="true"><i class="ph ph-arrows-out-simple"></i></span>
+              </button>
+            </figure>
+            <figure class="poster poster--2 reveal" style="--d:.1s">
+              <button class="frame frame--plain zoom-btn" type="button" data-zoom aria-label="Ampliar la cartelera 2">
+                <span class="slot"><i class="ph ph-image" aria-hidden="true"></i>Cartelera 2<code>assets/img/evidencias-clase/carteleras/cartelera-2.jpeg</code></span>
+                <img src="assets/img/evidencias-clase/carteleras/cartelera-2.jpeg" alt="Cartelera escrita a mano con la palabra Evaluación al centro y sus ideas: evaluación formativa, diversas evidencias de aprendizaje, metaevaluación y motivación, avance significativo, reflexión pedagógica y acciones o estrategias de mejora" loading="lazy" onerror="this.hidden=true;this.closest('.frame').classList.add('is-missing')">
+                <span class="zoom-hint" aria-hidden="true"><i class="ph ph-arrows-out-simple"></i></span>
+              </button>
+            </figure>
+          </div>
+        </div>
+
+<!-- Trabajo final -->
+        <div class="block" id="trabajo-final">
+          <div class="final">
+            <div class="final__pages reveal">
+              <button class="frame frame--page zoom-btn frame--tint-lilac" type="button" data-zoom aria-label="Ampliar la página 1 del trabajo final">
+                <span class="slot"><i class="ph ph-image" aria-hidden="true"></i>Trabajo final, página 1<code>assets/img/evidencias-clase/trabajo-final/trabajo-1.png</code></span>
+                <img src="assets/img/evidencias-clase/trabajo-final/trabajo-1.png" alt="Trabajo final, página 1" onerror="this.hidden=true;this.closest('.frame').classList.add('is-missing')">
+                <span class="zoom-hint" aria-hidden="true"><i class="ph ph-arrows-out-simple"></i></span>
+              </button>
+              <button class="frame frame--page zoom-btn frame--tint-powder" type="button" data-zoom aria-label="Ampliar la página 2 del trabajo final">
+                <span class="slot"><i class="ph ph-image" aria-hidden="true"></i>Trabajo final, página 2<code>assets/img/evidencias-clase/trabajo-final/trabajo-2.png</code></span>
+                <img src="assets/img/evidencias-clase/trabajo-final/trabajo-2.png" alt="Trabajo final, página 2" onerror="this.hidden=true;this.closest('.frame').classList.add('is-missing')">
+                <span class="zoom-hint" aria-hidden="true"><i class="ph ph-arrows-out-simple"></i></span>
+              </button>
+            </div>
+            <div class="final__copy reveal" style="--d:.1s">
+              <h3 class="title">Trabajo final</h3>
+              <p class="lede" style="margin-top:16px">Aquí puedes ver el trabajo final calificado por la profesora.</p>
+              <a class="btn" href="assets/docs/propuesta-evaluativa.docx" download><i class="ph ph-download-simple" aria-hidden="true"></i>Descargar trabajo (Word)</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Glosario -->
+        <div class="block" id="glosario">
+          <div class="block__head reveal">
+            <h3 class="title">Glosario de términos</h3>
+          </div>
+
+          <div class="glossary reveal" data-glossary>
+            <div class="glossary__search">
+              <label for="buscar-termino">Buscar un término</label>
+              <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+              <input id="buscar-termino" type="search" placeholder="Escribe aquí" autocomplete="off">
+            </div>
+
+            <nav class="g-index" aria-label="Filtrar el glosario por letra">
+                <button type="button" class="g-all" data-letter="all" aria-pressed="true">Todas</button>
+                <button type="button" data-letter="A" aria-pressed="false">A</button>
+                <button type="button" data-letter="C" aria-pressed="false">C</button>
+                <button type="button" data-letter="D" aria-pressed="false">D</button>
+                <button type="button" data-letter="E" aria-pressed="false">E</button>
+                <button type="button" data-letter="F" aria-pressed="false">F</button>
+                <button type="button" data-letter="G" aria-pressed="false">G</button>
+                <button type="button" data-letter="H" aria-pressed="false">H</button>
+                <button type="button" data-letter="I" aria-pressed="false">I</button>
+                <button type="button" data-letter="J" aria-pressed="false">J</button>
+                <button type="button" data-letter="L" aria-pressed="false">L</button>
+                <button type="button" data-letter="M" aria-pressed="false">M</button>
+                <button type="button" data-letter="O" aria-pressed="false">O</button>
+                <button type="button" data-letter="P" aria-pressed="false">P</button>
+                <button type="button" data-letter="R" aria-pressed="false">R</button>
+                <button type="button" data-letter="T" aria-pressed="false">T</button>
+                <button type="button" data-letter="V" aria-pressed="false">V</button>
+              </nav>
+
+            <div class="glossary__list" data-list>
+              <section class="g-group" id="g-A" aria-label="Términos con A">
+                <span class="g-letter" aria-hidden="true">A</span>
+                <dl class="g-terms">
+                  <div class="g-term"><dt>Autoevaluación</dt><dd>El estudiante reflexiona sobre su propio aprendizaje y desempeño. Promueve la metacognición y la autorregulación.</dd></div>
+                </dl>
+              </section>
+              <section class="g-group" id="g-C" aria-label="Términos con C">
+                <span class="g-letter" aria-hidden="true">C</span>
+                <dl class="g-terms">
+                  <div class="g-term"><dt>Calificación</dt><dd>Valoración del desempeño del estudiante, expresada de forma cualitativa (apto/no apto) o cuantitativa (números o escalas). No es lo mismo que evaluación.</dd></div>
+                  <div class="g-term"><dt>Coevaluación</dt><dd>Los estudiantes se evalúan entre pares con los mismos criterios. Fomenta el aprendizaje colaborativo y la responsabilidad mutua.</dd></div>
+                  <div class="g-term"><dt>Criterios de desempeño</dt><dd>Normas o condiciones que se fijan para valorar un proceso, producto o situación de aprendizaje, según los objetivos educativos.</dd></div>
+                  <div class="g-term"><dt>Cuestionario</dt><dd>Formulario estructurado de preguntas para recoger información específica, como opiniones, conocimientos o experiencias.</dd></div>
+                </dl>
+              </section>
+              <section class="g-group" id="g-D" aria-label="Términos con D">
+                <span class="g-letter" aria-hidden="true">D</span>
+                <dl class="g-terms">
+                  <div class="g-term"><dt>Diario de actividades</dt><dd>Registro en el que el estudiante anota sus actividades, reflexiones y logros durante un periodo.</dd></div>
+                </dl>
+              </section>
+              <section class="g-group" id="g-E" aria-label="Términos con E">
+                <span class="g-letter" aria-hidden="true">E</span>
+                <dl class="g-terms">
+                  <div class="g-term"><dt>Encuesta</dt><dd>Cuestionario estandarizado aplicado a un grupo para conocer opiniones, actitudes y experiencias.</dd></div>
+                  <div class="g-term"><dt>Ensayo</dt><dd>Texto largo y estructurado donde el estudiante expresa opiniones, argumentos y análisis sobre un tema.</dd></div>
+                  <div class="g-term"><dt>Entrevista</dt><dd>Conversación estructurada entre docente y estudiante, con preguntas específicas, para conocer conocimientos, habilidades y opiniones.</dd></div>
+                  <div class="g-term"><dt>Equidad</dt><dd>Las evaluaciones son justas y no discriminatorias, y todos tienen la misma oportunidad de demostrar lo que saben.</dd></div>
+                  <div class="g-term"><dt>Escala de calificación</dt><dd>Sistema numérico (por ejemplo, de 1 a 10) o descriptivo (por ejemplo, “sobresaliente”) para valorar el desempeño.</dd></div>
+                  <div class="g-term"><dt>Estándares de aprendizaje</dt><dd>Descripciones de los logros esperados que orientan la calidad educativa y el rendimiento de los estudiantes.</dd></div>
+                  <div class="g-term"><dt>Evaluación</dt><dd>Proceso de recoger datos y compararlos con estándares o criterios definidos para emitir un juicio de valor. Ese juicio orienta las decisiones y la acción educativa.</dd></div>
+                  <div class="g-term"><dt>Evaluación cuali-cuantitativa</dt><dd>Combina enfoques cualitativos y cuantitativos para tener una imagen más completa del aprendizaje.</dd></div>
+                  <div class="g-term"><dt>Evaluación cualitativa</dt><dd>Se centra en la calidad y naturaleza de la información (comprensión, creatividad, pensamiento crítico) más que en números.</dd></div>
+                  <div class="g-term"><dt>Evaluación cuantitativa</dt><dd>Trabaja con datos numéricos y estadísticos, por ejemplo mediante pruebas y calificaciones.</dd></div>
+                  <div class="g-term"><dt>Evaluación diagnóstica</dt><dd>Se aplica al inicio de un período o unidad para identificar los conocimientos, habilidades y competencias previas de los estudiantes.</dd></div>
+                  <div class="g-term"><dt>Evaluación final</dt><dd>Cierra un periodo (semestre, año). Resume el nivel de logro y se usa para promover y asignar calificaciones.</dd></div>
+                  <div class="g-term"><dt>Evaluación formativa</dt><dd>Es continua y da retroalimentación a estudiantes y docentes para mejorar el aprendizaje mientras ocurre.</dd></div>
+                  <div class="g-term"><dt>Evaluación inicial</dt><dd>Se hace al empezar un curso o unidad para conocer los saberes previos y las experiencias de los estudiantes y adaptar la enseñanza.</dd></div>
+                  <div class="g-term"><dt>Evaluación procesual</dt><dd>Se realiza de forma continua durante la instrucción. Monitorea el progreso y permite ajustes con retroalimentación constante.</dd></div>
+                  <div class="g-term"><dt>Evaluación sumativa</dt><dd>Se aplica al final de un período o unidad para medir el nivel de logro frente a los objetivos de aprendizaje.</dd></div>
+                </dl>
+              </section>
+              <section class="g-group" id="g-F" aria-label="Términos con F">
+                <span class="g-letter" aria-hidden="true">F</span>
+                <dl class="g-terms">
+                  <div class="g-term"><dt>Fiabilidad</dt><dd>La evaluación de resultados consistentes en distintos momentos y con distintos evaluadores.</dd></div>
+                </dl>
+              </section>
+              <section class="g-group" id="g-G" aria-label="Términos con G">
+                <span class="g-letter" aria-hidden="true">G</span>
+                <dl class="g-terms">
+                  <div class="g-term"><dt>Gamificación</dt><dd>Uso de elementos de juego en el aula para aumentar la participación y la motivación.</dd></div>
+                  <div class="g-term"><dt>Guía de observación</dt><dd>Pautas o lista que el docente usa para registrar y evaluar aspectos específicos del comportamiento o desempeño durante una actividad.</dd></div>
+                </dl>
+              </section>
+              <section class="g-group" id="g-H" aria-label="Términos con H">
+                <span class="g-letter" aria-hidden="true">H</span>
+                <dl class="g-terms">
+                  <div class="g-term"><dt>Heteroevaluación</dt><dd>La realiza un agente externo al estudiante, como el docente o un compañero, para medir su desempeño frente a los objetivos.</dd></div>
+                </dl>
+              </section>
+              <section class="g-group" id="g-I" aria-label="Términos con I">
+                <span class="g-letter" aria-hidden="true">I</span>
+                <dl class="g-terms">
+                  <div class="g-term"><dt>Informe de evaluación</dt><dd>Documento que muestra el progreso y desempeño de los estudiantes, útil para docentes, familias y los mismos estudiantes.</dd></div>
+                  <div class="g-term"><dt>Instrumento de evaluación</dt><dd>Herramienta concreta con la que el docente registra la información obtenida al aplicar una técnica.</dd></div>
+                </dl>
+              </section>
+              <section class="g-group" id="g-J" aria-label="Términos con J">
+                <span class="g-letter" aria-hidden="true">J</span>
+                <dl class="g-terms">
+                  <div class="g-term"><dt>Juicio de valor</dt><dd>Conclusión u opinión que se forma sobre el desempeño del estudiante a partir de los datos recogidos.</dd></div>
+                </dl>
+              </section>
+              <section class="g-group" id="g-L" aria-label="Términos con L">
+                <span class="g-letter" aria-hidden="true">L</span>
+                <dl class="g-terms">
+                  <div class="g-term"><dt>Lista de cotejo</dt><dd>Registro de la presencia o ausencia de características o acciones específicas, útil para verificar criterios de forma rápida.</dd></div>
+                  <div class="g-term"><dt>Lista de verificación</dt><dd>Enumera tareas o elementos que deben completarse o evaluarse, para comprobar que se cumplieron los requisitos.</dd></div>
+                </dl>
+              </section>
+              <section class="g-group" id="g-M" aria-label="Términos con M">
+                <span class="g-letter" aria-hidden="true">M</span>
+                <dl class="g-terms">
+                  <div class="g-term"><dt>Mapa conceptual</dt><dd>Representación gráfica para visualizar y organizar ideas y sus relaciones. Es técnica si ayuda a evaluar lo aprendido, e instrumento si se revisa y califica directamente.</dd></div>
+                  <div class="g-term"><dt>Metacognición</dt><dd>Capacidad de pensar sobre el propio pensamiento y aprender de eso.</dd></div>
+                </dl>
+              </section>
+              <section class="g-group" id="g-O" aria-label="Términos con O">
+                <span class="g-letter" aria-hidden="true">O</span>
+                <dl class="g-terms">
+                  <div class="g-term"><dt>Observación</dt><dd>Técnica que recoge información de forma sistemática viendo el comportamiento, las interacciones y el desempeño de los estudiantes.</dd></div>
+                </dl>
+              </section>
+              <section class="g-group" id="g-P" aria-label="Términos con P">
+                <span class="g-letter" aria-hidden="true">P</span>
+                <dl class="g-terms">
+                  <div class="g-term"><dt>Prueba</dt><dd>Examen oral o escrito para medir conocimientos y habilidades en áreas específicas del currículo.</dd></div>
+                </dl>
+              </section>
+              <section class="g-group" id="g-R" aria-label="Términos con R">
+                <span class="g-letter" aria-hidden="true">R</span>
+                <dl class="g-terms">
+                  <div class="g-term"><dt>Registro anecdótico</dt><dd>Informe breve y descriptivo de comportamientos o eventos significativos que ocurren en el aula.</dd></div>
+                  <div class="g-term"><dt>Retroalimentación (feedback)</dt><dd>Comentarios sobre el desempeño del estudiante para que mejore. Aporta motivación y autoconciencia, y le da al docente información para ajustar su enseñanza.</dd></div>
+                  <div class="g-term"><dt>Rúbrica</dt><dd>Describe los criterios y niveles de logro esperados para una tarea o proyecto, y da transparencia a la evaluación.</dd></div>
+                </dl>
+              </section>
+              <section class="g-group" id="g-T" aria-label="Términos con T">
+                <span class="g-letter" aria-hidden="true">T</span>
+                <dl class="g-terms">
+                  <div class="g-term"><dt>Técnica de evaluación</dt><dd>Método específico que usa el docente para recopilar datos sobre el aprendizaje. Mira no solo conocimientos, también habilidades, actitudes y capacidades.</dd></div>
+                  <div class="g-term"><dt>Transparencia</dt><dd>Los criterios de evaluación son claros y se comunican a los estudiantes, para que sepan qué se espera de ellos.</dd></div>
+                </dl>
+              </section>
+              <section class="g-group" id="g-V" aria-label="Términos con V">
+                <span class="g-letter" aria-hidden="true">V</span>
+                <dl class="g-terms">
+                  <div class="g-term"><dt>Validez</dt><dd>La evaluación mide con precisión lo que pretende medir y se alinea con los objetivos de aprendizaje.</dd></div>
+                </dl>
+              </section>
+            </div>
+            <p class="glossary__empty" data-empty hidden>No encontramos ese término. Prueba con otra palabra.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== EVIDENCIAS COMPLEMENTARIAS ===================== -->
+    <section id="evidencias-complementarias" class="sheet sheet--comp" aria-labelledby="titulo-comp">
+      <div class="wrap">
+
+        <div class="section-head reveal">
+          <h2 id="titulo-comp" class="banner">Evidencias <em class="marker">complementarias</em></h2>
+        </div>
+
+        <!-- Reseñas de artículos -->
+        <div class="block" id="resenas">
+          <div class="block__head reveal">
+            <h3 class="title">Reseñas de artículos</h3>
+          </div>
+
+          <article class="review reveal">
+            <div class="review__who">
+              <span class="chip chip--rose"><b>V</b>Valeria Álvarez</span>
+            </div>
+            <div>
+              <h4 class="review__title">Evaluación formativa y sumativa en el proceso educativo</h4>
+              <p class="apa">Chacón Tapia, P. T., Yánez Soria, J. E., Soria Vásquez, M. C., Caillagua Robayo, D. A., &amp; Siza Moposita, C. M. (2023). Evaluación formativa y sumativa en el proceso educativo: Revisión de técnicas innovadoras y sus efectos en el aprendizaje del estudiante. <i>Ciencia Latina Revista Científica Multidisciplinar, 7</i>(2), 1478-1497.</p>
+              <a class="doi" href="https://doi.org/10.37811/cl_rcm.v7i2.5414" target="_blank" rel="noopener"><i class="ph ph-link" aria-hidden="true"></i>https://doi.org/10.37811/cl_rcm.v7i2.5414</a>
+              <div class="review__reflection">
+                <h4 class="label">Reflexión</h4>
+                <p>Este artículo nos brinda perspectivas muy significativas de la importancia de la evaluación formativa y sumativa en el proceso educativo, y sobre cómo influyen en el aprendizaje de los estudiantes. Los autores se replantean la idea de que evaluar es solo poner una nota final; en este caso, la evaluación sumativa es necesaria para saber qué se logró al final de un proyecto, una tarea o una unidad, pero la formativa permite acompañar a los estudiantes durante el proceso de estas actividades, poderles brindar una retroalimentación oportuna y a tiempo. También el artículo menciona que un buen uso de la evaluación formativa está relacionado con un mejor rendimiento académico y se destaca el uso de esta y el valor de esta en todos los niveles educativos.</p>
+              </div>
+            </div>
+          </article>
+          <article class="review reveal" style="--d:.06s">
+            <div class="review__who">
+              <span class="chip chip--sage"><b>V</b>Vanessa Ceballos</span>
+            </div>
+            <div>
+              <h4 class="review__title">La evaluación formativa en la educación</h4>
+              <p class="apa">Cruzado Saldaña, J. J. (2022). La evaluación formativa en la educación. <i>Comuni@cción: Revista de Investigación en Comunicación y Desarrollo, 13</i>(2), 149-160.</p>
+              <a class="doi" href="https://doi.org/10.33595/2226-1478.13.2.672" target="_blank" rel="noopener"><i class="ph ph-link" aria-hidden="true"></i>https://doi.org/10.33595/2226-1478.13.2.672</a>
+              <div class="review__reflection">
+                <h4 class="label">Reflexión</h4>
+                <p>El artículo de Cruzado Saldaña ofrece un buen punto de partida para entender la evaluación formativa. Parte de un problema real: en la introducción cita a Ortiz (2020), quien señala que en Colombia la evaluación suele percibirse como sinónimo de fracaso, angustia y formalidad, y no como una ayuda para aprender. Frente a eso, el autor propone el ciclo de la evaluación formativa (¿a dónde vamos?, ¿dónde estamos?, ¿cómo seguimos progresando?), que vuelve concreta una idea que podría quedarse en teoría, pues indica pasos claros: comunicar metas, definir criterios, recoger evidencias, retroalimentar y ajustar la enseñanza. También destaca la retroalimentación como eje del proceso, entendida como información clara sobre el avance del estudiante y no como elogio o crítica sin sustento. Sin embargo, presenta los enfoques teóricos como una lista sin compararlos, su metodología tiene incoherencias (dice excluir libros y tesis, pero los cita) y casi no incluye ejemplos de aula ni de enseñanza de idiomas. Por eso resulta útil como lectura introductoria, pero no como fuente única.</p>
+              </div>
+            </div>
+          </article>
+          <article class="review reveal" style="--d:.06s">
+            <div class="review__who">
+              <span class="chip chip--powder"><b>M</b>Marcela Sánchez</span>
+            </div>
+            <div>
+              <h4 class="review__title">La evaluación auténtica de los procesos educativos</h4>
+              <p class="apa">Vallejo Ruiz, M., &amp; Molina Saorín, J. (2014). La evaluación auténtica de los procesos educativos. <i>Revista Iberoamericana de Educación, 64</i>, 11-25.</p>
+              <a class="doi" href="https://doi.org/10.35362/rie640403" target="_blank" rel="noopener"><i class="ph ph-link" aria-hidden="true"></i>https://doi.org/10.35362/rie640403</a>
+              <div class="review__reflection">
+                <h4 class="label">Reflexión</h4>
+                <p>Los autores explican que la evaluación no debe limitarse a calificar o medir los conocimientos mediante exámenes tradicionales. Por el contrario, proponen una evaluación auténtica, en la que los estudiantes puedan demostrar lo que han aprendido a través de actividades y situaciones relacionadas con la vida real.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Videos -->
+        <div class="block" id="videos">
+          <div class="block__head reveal">
+            <h3 class="title">Videos</h3>
+          </div>
+
+          <div class="videos">
+            <article class="video-card video-card--main reveal">
+              <a class="video__thumb" href="https://www.youtube.com/watch?v=bJFMNZl5oqI" target="_blank" rel="noopener" aria-label="Ver el video de Valeria Álvarez en YouTube (se abre en una pestaña nueva)">
+                <img src="https://i.ytimg.com/vi/bJFMNZl5oqI/hqdefault.jpg" alt="" loading="lazy">
+                <span class="video__play"><span><i class="ph-fill ph-play" aria-hidden="true"></i></span></span>
+              </a>
+              <span class="chip chip--sm chip--rose"><b>V</b>Valeria Álvarez</span>
+              <div class="video__meta">
+                <p class="video__title">Técnicas e instrumentos para evaluar los aprendizajes</p>
+                <a class="btn" href="https://www.youtube.com/watch?v=bJFMNZl5oqI" target="_blank" rel="noopener"><i class="ph ph-youtube-logo" aria-hidden="true"></i>Ver en YouTube</a>
+              </div>
+              <div>
+                <h4 class="label">Reflexión</h4>
+                <p>Este video nos enseña que la evaluación práctica necesita orden. Distingue con claridad entre la técnica y el instrumento, recordándonos que debemos elegir los recursos adecuados según lo que queremos lograr en el aula.</p>
+              </div>
+            </article>
+            <article class="video-card  reveal" style="--d:.08s">
+              <a class="video__thumb" href="https://www.youtube.com/watch?v=eZnSXLPtth4" target="_blank" rel="noopener" aria-label="Ver el video de Vanessa Ceballos en YouTube (se abre en una pestaña nueva)">
+                <img src="https://i.ytimg.com/vi/eZnSXLPtth4/hqdefault.jpg" alt="" loading="lazy">
+                <span class="video__play"><span><i class="ph-fill ph-play" aria-hidden="true"></i></span></span>
+              </a>
+              <span class="chip chip--sm chip--sage"><b>V</b>Vanessa Ceballos</span>
+              <div class="video__meta">
+                <p class="video__title">Tipos de EVALUACIÓN Educativa: Inicial, Formativa, Sumativa y Alternativa</p>
+                <a class="btn btn--soft" href="https://www.youtube.com/watch?v=eZnSXLPtth4" target="_blank" rel="noopener"><i class="ph ph-youtube-logo" aria-hidden="true"></i>Ver en YouTube</a>
+              </div>
+              <div>
+                <h4 class="label">Reflexión</h4>
+                <p>Este video aborda la evaluación como un apoyo indispensable del proceso de enseñanza. También destaca que no debe verse como un examen aislado o un castigo, sino como una herramienta formativa que ayuda a retroalimentar y guiar el progreso real del estudiante.</p>
+              </div>
+            </article>
+            <article class="video-card  reveal" style="--d:.16s">
+              <a class="video__thumb" href="https://www.youtube.com/watch?v=yNTxyohs-YA" target="_blank" rel="noopener" aria-label="Ver el video de Marcela Sánchez en YouTube (se abre en una pestaña nueva)">
+                <img src="https://i.ytimg.com/vi/yNTxyohs-YA/hqdefault.jpg" alt="" loading="lazy">
+                <span class="video__play"><span><i class="ph-fill ph-play" aria-hidden="true"></i></span></span>
+              </a>
+              <span class="chip chip--sm chip--powder"><b>M</b>Marcela Sánchez</span>
+              <div class="video__meta">
+                <p class="video__title">La evaluación en la educación</p>
+                <a class="btn btn--soft" href="https://www.youtube.com/watch?v=yNTxyohs-YA" target="_blank" rel="noopener"><i class="ph ph-youtube-logo" aria-hidden="true"></i>Ver en YouTube</a>
+              </div>
+              <div>
+                <h4 class="label">Reflexión</h4>
+                <p>Con este video podemos recordar el lado más humano y ético de la enseñanza. También señala que evaluar mal empobrece el aprendizaje, mientras que hacerlo desde el diálogo y la comprensión busca formar no solo profesionales competentes, sino mejores personas y ciudadanos íntegros.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Reflexiones de clase -->
+        <div class="block" id="reflexiones">
+          <div class="block__head reveal">
+            <h3 class="title" style="text-align:center">Reflexiones de clase</h3>
+          </div>
+          <div class="essay reveal">
+            <p>Antes de este curso, pensábamos que evaluar era algo que pasaba al final, con el examen, la nota y el pasó o no pasó. Ahora entendemos que la evaluación es una de las herramientas más poderosas que tenemos como docentes, porque nos dice dónde están nuestros estudiantes, hacia dónde van y qué necesitamos cambiar nosotras para ayudarnos a llegar.</p>
+            <p>Para nosotras, el curso de Evaluación es importante porque nos obliga a preguntarnos para qué evaluamos y no solo cómo hacerlo. Una buena evaluación tiene que estar alineada con lo que enseñamos y con lo que esperamos que los estudiantes aprendan. Si evaluamos algo que nunca trabajamos en clase, el problema no es del estudiante sino nuestro.</p>
+            <p>Durante el curso vimos varios tipos de evaluación, y cada uno cumple una función distinta en el aula. La diagnóstica es el punto de partida, porque antes de empezar un tema nos ayuda a saber qué conocen ya los estudiantes y qué vacíos tienen, y así podemos planear de forma realista en lugar de partir de suposiciones. La formativa, para nosotras, es la más valiosa en el día a día, ya que ocurre durante el proceso a través de preguntas, observación, retroalimentación y actividades cortas. Su propósito no es calificar sino acompañar y corregir el rumbo a tiempo, y ahí el feedback es clave, sobre todo cuando es claro, cercano y fácil de entender para el estudiante. La sumativa cierra un proceso y verifica qué se logró al final de una unidad o periodo; es necesaria para dar cuenta de los resultados, pero pierde sentido si es lo único que hacemos. Por último, la autoevaluación y la coevaluación hacen que los estudiantes sean protagonistas de su propio aprendizaje, porque al evaluarse a sí mismos o a sus compañeros aprenden a reconocer sus fortalezas, a identificar qué mejorar y a desarrollar pensamiento crítico y autonomía.</p>
+            <p>Algo que nos llevamos del curso es que ningún tipo de evaluación es mejor que otro, sino que se complementan. Una clase equilibrada necesita diagnosticar al inicio, acompañar durante el proceso y verificar al final, sin olvidar darles voz a los estudiantes.</p>
+            <p>También entendimos que evaluar bien es una cuestión de justicia. Usar criterios claros, apoyarnos en instrumentos como rúbricas y listas de cotejo, y comunicar de antemano lo que se espera de ellos hace que el proceso sea transparente y menos intimidante. Esto pesa aún más en la enseñanza de una lengua extranjera, donde el error es parte natural del aprendizaje y no debería verse como un fracaso.</p>
+            <p>Como futuras docentes de inglés, este curso nos deja una idea muy clara, y es que evaluar no es juzgar sino entender, acompañar y mejorar. Queremos llevar esto a nuestra práctica con los estudiantes para que la evaluación sea una oportunidad de crecer y no algo que les dé miedo.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p class="footer__name">Aprender a evaluar, evaluar para crecer</p>
+      <p>Hecho por Valeria Álvarez, Vanessa Ceballos y Marcela Sánchez</p>
+      <p>Universidad Católica Luis Amigó, materia Evaluación, 2026</p>
     </div>
-  </section>
+  </footer>
 
-  <section id="video">
-    <span class="section-eyebrow">Entrada 3</span>
-    <h2>Video: técnicas e instrumentos para evaluar los aprendizajes</h2>
-    <p class="section-lead">Un video que complementa la teoría con ejemplos prácticos de técnicas e instrumentos de evaluación aplicables en el aula.</p>
-    <div class="card">
-      <div class="video-wrap">
-        <a class="video-thumb" href="https://www.youtube.com/watch?v=bJFMNZl5oqI" target="_blank" rel="noopener" aria-label="Ver video: Técnicas e instrumentos para evaluar los aprendizajes">
-          <img src="https://i.ytimg.com/vi/bJFMNZl5oqI/hqdefault.jpg" alt="Miniatura del video Técnicas e instrumentos para evaluar los aprendizajes" loading="lazy">
-          <span class="play-badge">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </span>
-        </a>
-      </div>
-      <a class="open-btn" href="https://www.youtube.com/watch?v=bJFMNZl5oqI" target="_blank" rel="noopener">Ver en YouTube</a>
-    </div>
-  </section>
+  <button class="to-top" type="button" data-to-top aria-label="Volver arriba"><i class="ph ph-arrow-up" aria-hidden="true"></i></button>
+  <span data-top-sentinel style="position:absolute;top:520px;height:1px;width:1px" aria-hidden="true"></span>
 
-  <section id="ficha">
-    <span class="section-eyebrow">Entrada 4</span>
-    <h2>Ficha técnica: guía de entrevista semiestructurada</h2>
-    <p class="section-lead">Diseño de un instrumento de evaluación: una guía de entrevista semiestructurada para conocer la adaptación de los estudiantes al primer semestre universitario.</p>
-    <div class="card">
-      <div class="frame-wrap">
-        <img src="Ficha.png" alt="Ficha técnica: guía de entrevista semiestructurada sobre la adaptación al primer semestre universitario">
-      </div>
-    </div>
-  </section>
+  <dialog class="lightbox" id="lightbox" aria-label="Imagen ampliada">
+    <button class="lightbox__close" type="button" data-close aria-label="Cerrar"><i class="ph ph-x" aria-hidden="true"></i></button>
+    <div class="lightbox__body"><img alt="" data-lightbox-img></div>
+  </dialog>
 
-  <section id="formulario">
-    <span class="section-eyebrow">Entrada 5</span>
-    <h2>Cuestionario Semi-Estructurado</h2>
-    <p class="section-lead">La guía de entrevista es un instrumento que contiene las preguntas y los temas que orientan la conversación. Permite organizar la información que se quiere obtener.</p>
-    <div class="card">
-      <div class="frame-wrap form-wrap">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf9vCmAeq4MSlzpAyaI4Ze8fGHqfGwKttn2x0Bhg9Tdy_g2GQ/viewform?embedded=true" title="Formulario de evaluación">Cargando…</iframe>
-      </div>
-      <a class="open-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSf9vCmAeq4MSlzpAyaI4Ze8fGHqfGwKttn2x0Bhg9Tdy_g2GQ/viewform?pli=1" target="_blank" rel="noopener">Abrir el formulario en Google Forms</a>
-    </div>
-  </section>
-
-  <section id="decreto">
-    <span class="section-eyebrow">Entrada 6</span>
-    <h2>Marco normativo: Decreto 1290 de 2009</h2>
-    <p class="section-lead">El decreto colombiano que reglamenta la evaluación del aprendizaje y la promoción de los estudiantes en los niveles de educación básica y media.</p>
-    <div class="card decreto-card">
-      <div class="decreto-badge">📜</div>
-      <div class="decreto-text">
-        <h3>Decreto 1290 de 2009 (Abril 16)</h3>
-        <p>"Por el cual se reglamenta la evaluación del aprendizaje y promoción de los estudiantes de los niveles de educación básica y media." Establece los ámbitos, propósitos y componentes del sistema institucional de evaluación en Colombia.</p>
-        <a class="open-btn alt" href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma_pdf.php?i=35954" target="_blank" rel="noopener">Consultar el decreto completo</a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <p class="footer-title">Valeria's Blog</p>
-  <p>Hecho por Valeria Álvarez Ramírez · Universidad Católica Luis Amigó · 2026</p>
-</footer>
-
-<button id="back-to-top" aria-label="Volver arriba">↑</button>
-
-<script>
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => navLinks.classList.remove('open'));
-  });
-
-  const sections = document.querySelectorAll('main section[id]');
-  const navAnchors = document.querySelectorAll('.nav-links a');
-
-  const spy = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        navAnchors.forEach(a => a.classList.remove('active'));
-        const active = document.querySelector('.nav-links a[href="#' + entry.target.id + '"]');
-        if(active) active.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-45% 0px -50% 0px' });
-
-  sections.forEach(sec => spy.observe(sec));
-
-  const backToTop = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
-    backToTop.classList.toggle('show', window.scrollY > 500);
-  });
-  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-</script>
-
+  <script src="js/main.js"></script>
 </body>
 </html>
